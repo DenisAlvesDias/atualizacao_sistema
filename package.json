@@ -1,7 +1,7 @@
 {
   "name": "atualizacao_sistema",
   "version": "1.0.2",
-  "description": "One",
+  "description": "One S",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
