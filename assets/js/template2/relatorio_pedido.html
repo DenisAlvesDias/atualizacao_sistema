@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9" data-ng-app="materialAdmin" data-ng-controller="materialadminCtrl as mactrl"><![endif]-->
+<![if IE 9 ]>
+<html data-ng-app="materialAdmin" data-ng-controller="materialadminCtrl as mactrl">
+<![endif]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>One Soluções</title>
+
+    <!-- Vendor CSS -->
+
+
+
+    <!-- CSS -->
+
+
+    <style type="text/css">
+    @page {
+    margin: 10mm;
+}
+        h4,
+        span {
+            line-height: 0px;
+            color: #000000;
+            font-size: 25px;
+        }
+
+       table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+@media print {
+    .ocultar_print{
+        display: none;
+    }   
+}
+    </style>
+
+</head>
+
+<body ng-app="app" ng-controller="relatorio_pedido" >
+    <br>
+  <div style="text-align: center;">
+      <img style="width: 30%; height: 30%;" src="http://www.uaipedido.com.br/uaipedido/imagem/logo/logo_one.jpg">
+      <h4>{{relatorio.empresa}}</h4>
+      <h4>{{relatorio.inicio | date:'dd/MM/yyyy'}} à {{relatorio.final | date:'dd/MM/yyyy'}}</h4>    
+      <h4>Quantidade de Pedidos: {{relatorio.pedidos.length}}</h4>  
+  <h4>Valor Total: {{relatorio.valor_total | currency:'R$'}}</h4> 
+  <h4>Valor a pagar: {{relatorio.valor_pagar | currency: 'R$'}}</h4>
+  <input class="ocultar_print" type="text" ng-model="relatorio.valor_pagar">
+  </div>
+  <div class="table100">
+        <table class="blueTable">
+            <tr class="table100-head">                    
+                 <th>Data</th>   
+                 <th>Cliente</th>
+                 <th>Valor Total</th>   
+            </tr>
+            <tr ng-repeat="row in relatorio.pedidos" style="cursor: pointer;" >                   
+              <td>{{row.data}}</td>
+              <td>{{row.cliente}}</td>
+              <td>{{row.valor_total | currency: 'R$'}}</td>
+            </tr>
+           
+          </table>
+    </div>  
+  
+
+
+
+
+    <!-- Angular -->
+    <script src="../js/angular.min.js"></script>
+    <script src="../controller/relatorio_pedido.js"></script>
+
+</body>
+
+</html>
